@@ -1,6 +1,8 @@
 package com.psli.guess100;
 
+import android.content.DialogInterface;
 import android.opengl.ETC1;
+import android.preference.DialogPreference;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void findViews() {
-        TextView t_secret = (TextView) findViewById(R.id.secret);
+        final TextView t_secret = (TextView) findViewById(R.id.secret);
         t_secret.setText(Integer.toString(sec_num));
         final TextView t_info = (TextView) findViewById(R.id.info);
         final EditText ed_number = (EditText) findViewById(R.id.number);
@@ -38,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
                         if (num == sec_num) {
                             new AlertDialog.Builder(MainActivity.this)
                                     .setMessage("Right Answer")
+                                    .setNeutralButton("New Game",
+                                            new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    sec_num = random.nextInt(100)+1;
+                                                    t_secret.setText(Integer.toString(sec_num));
+                                                }
+                                            })
                                     .setPositiveButton("OK", null)
                                     .show();
                         } else {
