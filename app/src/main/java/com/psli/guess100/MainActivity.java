@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                             } else if(num < sec_num) {
                                 start = num;
                             }
-                            t_info.setText(start+" to 88"+end);
+                            t_info.setText(start+" to "+end);
                         }
                     }
                 }
