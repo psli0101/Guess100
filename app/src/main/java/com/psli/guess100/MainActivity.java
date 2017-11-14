@@ -45,10 +45,14 @@ public class MainActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     sec_num = random.nextInt(100)+1;
+                                                    end = 100;
+                                                    start = 0;
                                                     t_secret.setText(Integer.toString(sec_num));
+                                                    t_info.setText(R.string.info_msg);
+                                                    ed_number.setText(R.string.num_msg);
                                                 }
                                             })
-                                    .setPositiveButton("OK", null)
+                                    .setPositiveButton(R.string.ok, null)
                                     .show();
                         } else {
                             if(num > sec_num) {
